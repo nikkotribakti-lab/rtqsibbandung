@@ -1,640 +1,359 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumah Tahfizh Qur'an Semai Insan Bestari | Mencetak Generasi Qur'ani</title>
+    <title>Rumah Tahfizh Qur'an SIB | Excellence in Qur'anic Education</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* CSS Dasar dan Reset */
         :root {
-            /* Warna disesuaikan dengan logo */
-            --primary-color: #285430; /* Hijau Gelap */
-            --secondary-color: #DAA520; /* Emas */
-            --dark-color: #343a40; 
-            --light-color: #f8f9fa; 
-            --white-color: #ffffff;
-            --font-family: 'Poppins', sans-serif;
+            --emerald: #064E3B;
+            --emerald-light: #10b981;
+            --gold: #D4AF37;
+            --cream: #FAF9F6;
+            --text-dark: #121212;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --glass: rgba(255, 255, 255, 0.85);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            background-color: var(--light-color);
-            color: var(--dark-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
             overflow-x: hidden;
+            line-height: 1.7;
         }
 
-        /* Utilitas */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px; /* Jarak standar 20px dari tepi layar */
-        }
+        h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; }
 
-        .text-center {
-            text-align: center;
-        }
+        .container { max-width: 1300px; margin: auto; padding: 0 40px; }
+
+        /* --- Global Components --- */
+        .section-tag { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; display: block; text-align: center; margin-bottom: 10px; font-size: 0.8rem; }
+        .section-title { font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; margin-bottom: 60px; color: var(--emerald); }
 
         .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 10px 5px; /* Margin atas/bawah 10px, kiri/kanan 5px untuk jarak antar tombol */
+            padding: 18px 40px; border-radius: 100px; text-decoration: none;
+            font-weight: 700; transition: var(--transition); display: inline-block;
+            text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem;
+            position: relative; overflow: hidden; z-index: 1;
         }
+        .btn-primary { background: var(--emerald); color: white; border: 1px solid var(--emerald); }
+        .btn-primary:hover { color: var(--emerald); background: transparent; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(6, 78, 59, 0.2); }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
-        }
+        .btn-secondary { background: var(--gold); color: white; border: 1px solid var(--gold); margin-left: 15px; }
+        .btn-secondary:hover { background: transparent; color: var(--gold); transform: translateY(-5px); }
 
-        .btn-primary:hover {
-            background-color: #1e3d23;
-            border-color: #1e3d23;
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-color);
-            color: var(--primary-color); 
-            border: 2px solid var(--secondary-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #b8860b;
-            border-color: #b8860b;
-        }
-
-        /* Header / Navbar */
+        /* --- Floating Navigation --- */
         #header {
-            background: var(--primary-color); 
-            color: var(--white-color);
-            padding: 10px 0; /* Jarak vertikal */
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1200px; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(15px);
+            border-radius: 100px; padding: 12px 35px; transition: var(--transition);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
         }
+        #header.scrolled { top: 10px; width: 95%; background: var(--emerald); }
+        #header.scrolled .logo-text, #header.scrolled a { color: white; }
 
-        #header .container {
-            display: flex;
-            justify-content: space-between; /* Menyebar logo dan menu */
-            align-items: center;
-        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo-brand { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        .logo-img { height: 48px; }
+        .logo-text { font-weight: 800; font-size: 0.9rem; color: var(--emerald); letter-spacing: 1px; }
 
-        #header .logo-brand { /* Container untuk logo dan teks */
-            display: flex;
-            align-items: center;
-            text-decoration: none; /* Menghilangkan underline pada link logo */
-            color: var(--white-color); /* Warna teks default untuk brand */
-        }
+        #nav-menu ul { display: flex; list-style: none; gap: 30px; }
+        #nav-menu a { text-decoration: none; color: var(--emerald); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        #nav-menu a:hover { color: var(--gold); }
 
-        #header .logo-img { /* Styling untuk gambar logo */
-            height: 50px; 
-            width: auto;
-            margin-right: 10px; /* Jarak antara logo gambar dan teks */
-            transition: transform 0.3s ease;
-        }
+        .menu-icon { display: none; font-size: 1.5rem; color: var(--emerald); cursor: pointer; }
 
-        #header .logo-brand:hover .logo-img {
-            transform: scale(1.05);
-        }
-
-        #header .logo-text { /* Styling untuk teks di samping logo */
-            font-weight: 700;
-            font-size: 1.2rem; /* Ukuran teks, sesuaikan jika perlu */
-            white-space: nowrap; /* Mencegah teks turun baris */
-            color: var(--white-color); /* Pastikan teks berwarna putih */
-            transition: color 0.3s ease;
-        }
-        
-        #header .logo-brand:hover .logo-text {
-            color: var(--secondary-color); /* Teks hover jadi emas */
-        }
-
-        #header nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        #header nav ul li a {
-            color: var(--white-color);
-            text-decoration: none;
-            padding: 5px 15px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        #header nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Mobile Menu (Hamburger) */
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--white-color); 
-        }
-
-        /* Hero Section */
+        /* --- Hero Section Parallax --- */
         #hero {
-            background: linear-gradient(rgba(40, 84, 48, 0.75), rgba(40, 84, 48, 0.75)), url('anak.png') no-repeat center center/cover;
-            background-attachment: fixed; 
-            color: white;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 70px; 
+            height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('anak.png') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: white; text-align: center; border-radius: 0 0 60px 60px;
+        }
+        #hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1; margin-bottom: 25px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        #hero p { font-size: clamp(1rem, 2vw, 1.3rem); max-width: 800px; margin: 0 auto 40px; opacity: 0.95; font-weight: 400; }
+
+        /* --- About Section --- */
+        #about { padding: 120px 0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-image { 
+            height: 500px; border-radius: 40px; 
+            background: url('logo.jpg') center/cover;
+            position: relative; box-shadow: var(--transition);
+        }
+        .about-image::after {
+            content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px;
+            border: 2px solid var(--gold); border-radius: 40px; z-index: -1;
         }
 
-        #hero .hero-content {
-            max-width: 800px;
-            text-align: center;
+        /* --- Program Section: 6 Perfect Boxes --- */
+        #programs { background: #fff; padding: 120px 0; }
+        .program-grid-perfect {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
         }
-
-        #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        /* Section Styling Umum */
-        section {
-            padding: 80px 0;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+        .program-box {
             position: relative;
-            display: inline-block;
-            color: var(--primary-color);
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: var(--secondary-color); 
-            bottom: -10px;
-            left: 25%;
-            border-radius: 5px;
-        }
-
-        /* Tentang Kami Section */
-        #about .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-
-        #about .about-text {
-            text-align: justify;
-        }
-
-        #about .about-text h3 {
-            color: var(--primary-color); 
-            margin-bottom: 15px;
-        }
-
-        #about .about-image {
-            background: url('logo.jpg') no-repeat center center/cover;
-            height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Program Unggulan Section */
-        #programs {
-            background-color: var(--primary-color); 
-            color: white;
-            text-align: center;
-        }
-
-        #programs h2 {
-            color: var(--secondary-color);
-        }
-
-        #programs h2::after {
-            background-color: var(--white-color); 
-        }
-
-        #programs .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        #programs .program-card {
-            background: rgba(255, 255, 255, 0.1); 
-            padding: 30px;
-            border-radius: 10px;
-            transition: transform 0.3s ease, background 0.3s ease;
-            height: 100%; 
+            background: #fdfdfd;
+            border-radius: 32px;
+            padding: 50px 35px;
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            min-height: 360px;
+            justify-content: center;
+            cursor: pointer;
         }
-
-        #programs .program-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        #programs .program-card i {
+        .program-box i {
             font-size: 3rem;
-            color: var(--secondary-color); 
-            margin-bottom: 15px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            transition: var(--transition);
         }
-
-        #programs .program-card h3 {
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* ============================ */
-        /* DOKUMENTASI SECTION STYLING */
-        /* ============================ */
-        #documentation {
-            background-color: var(--light-color); /* Warna terang untuk kontras setelah bagian hijau gelap */
-            text-align: center;
-        }
-
-        #documentation h2 {
-            color: var(--primary-color);
-        }
-
-        .gallery-grid {
-            display: grid;
-            /* Layout: 3 kolom di desktop, minimal 300px per kolom */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px; /* Tinggi tetap untuk konsistensi */
-            object-fit: cover; /* Memastikan gambar mengisi ruang tanpa terdistorsi */
-            display: block;
-        }
-
-        /* Kontak Section */
-        #contact {
-            background-color: var(--white-color);
-            text-align: center;
-        }
-
-        #contact .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        #contact .info-item {
-            text-align: center;
-            max-width: 250px;
-        }
-
-        #contact .info-item i {
-            font-size: 2.5rem;
-            color: var(--primary-color); 
-            margin-bottom: 10px;
-        }
-
-        /* Kontainer untuk Tombol di Kontak */
-        #contact .contact-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; 
-            margin-top: 20px;
-        }
-
-        /* Footer */
-        #footer {
-            background-color: var(--dark-color); 
-            color: var(--light-color);
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        #footer .social-links a {
-            color: var(--secondary-color); 
+        .program-box h3 {
             font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+            color: var(--emerald);
+            margin-bottom: 15px;
+            transition: var(--transition);
         }
-
-        #footer .social-links a:hover {
-            color: var(--white-color); 
+        .program-box p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            transition: var(--transition);
         }
+        .program-box:hover {
+            transform: translateY(-12px);
+            background: var(--emerald);
+            border-color: var(--emerald);
+            box-shadow: 0 30px 60px rgba(6, 78, 59, 0.15);
+        }
+        .program-box:hover i, .program-box:hover h3, .program-box:hover p { color: #fff; }
 
-        /* MEDIA QUERIES (Responsif) */
+        .tag-container {
+            display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 20px;
+        }
+        .tag-badge {
+            font-size: 0.75rem; background: rgba(212, 175, 55, 0.15); color: var(--gold);
+            padding: 5px 15px; border-radius: 100px; font-weight: 700;
+        }
+        .program-box:hover .tag-badge { background: rgba(255, 255, 255, 0.2); color: #fff; }
+
+        /* --- Documentation Loop --- */
+        .gallery-container { width: 100%; overflow: hidden; padding: 40px 0; background: #fff; }
+        .gallery-track { display: flex; gap: 20px; animation: scroll 30s linear infinite; width: max-content; }
+        .gallery-img { width: 400px; height: 300px; border-radius: 24px; object-fit: cover; transition: 0.5s; }
+        .gallery-img:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- Contact Box --- */
+        #contact { padding: 120px 0; }
+        .contact-box {
+            background: var(--emerald); border-radius: 60px; padding: 80px;
+            color: white; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+        .contact-info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .contact-info-item i { width: 50px; height: 50px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 15px; color: var(--gold); font-size: 1.2rem; }
+
+        /* --- Footer --- */
+        footer { padding: 80px 0 40px; text-align: center; background: #fff; }
+        .social-link { 
+            width: 55px; height: 55px; display: inline-flex; align-items: center; justify-content: center; 
+            border: 1px solid #eee; border-radius: 50%; color: var(--emerald); margin: 0 10px; 
+            transition: var(--transition); text-decoration: none; font-size: 1.2rem;
+        }
+        .social-link:hover { background: var(--emerald); color: white; transform: translateY(-5px) rotate(10deg); }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .about-grid, .contact-box { grid-template-columns: 1fr; }
+            .program-grid-perfect { grid-template-columns: repeat(2, 1fr); }
+            .contact-box { padding: 50px 30px; text-align: center; }
+            .contact-info-item { justify-content: center; }
+        }
         @media (max-width: 768px) {
-            #header .logo-img {
-                height: 40px; 
-            }
-            
-            #header .logo-text {
-                font-size: 1rem; 
-            }
-
-            #header nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px; 
-                left: 0;
-                width: 100%;
-                background: var(--primary-color); 
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            #header nav.active {
-                display: flex;
-            }
-
-            #header nav ul {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-
-            #header nav ul li {
-                text-align: center;
-                margin: 5px 0;
-            }
-
-            #header nav ul li a {
-                display: block;
-                padding: 10px 20px;
-                color: var(--white-color); 
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
-            #hero {
-                height: 80vh;
-            }
-
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-
-            #hero p {
-                font-size: 1rem;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-            
-            .gallery-grid {
-                /* Di mobile, buat 1 kolom */
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 500px) {
-            #hero h1 {
-                font-size: 2rem;
-            }
-
-            .btn {
-                padding: 8px 20px;
-                font-size: 0.9rem;
-            }
-
-            #about .about-image {
-                height: 200px;
-            }
+            #nav-menu { display: none; }
+            .menu-icon { display: block; }
+            .program-grid-perfect { grid-template-columns: 1fr; }
+            .btn { width: 100%; margin: 10px 0; }
+            .contact-box { border-radius: 40px; }
         }
     </style>
 </head>
 <body>
 
     <header id="header">
-        <div class="container">
-            
+        <div class="nav-wrapper">
             <a href="#hero" class="logo-brand">
-                <img src="logo.jpg" alt="Rumah Tahfizh Qur'an Semai Insan Bestari Logo" class="logo-img">
-                <span class="logo-text">Rumah Tahfizh Quran SIB</span>
+                <img src="logo.jpg" alt="RTQ SIB" class="logo-img">
+                <span class="logo-text">RTQ SEMAI <span style="color:var(--gold)">INSAN BESTARI</span></span>
             </a>
-            
             <nav id="nav-menu">
                 <ul>
                     <li><a href="#hero">Beranda</a></li>
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#programs">Program</a></li>
-                    <li><a href="#documentation">Dokumentasi</a></li> <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#documentation">Galeri</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
             </nav>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
+            <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
         </div>
     </header>
 
     <section id="hero">
-        <div class="hero-content">
-            <h1>SANTRI PEMBERANI BERJIWA QURANI</h1>
-            <p>Rumah Tahfizh Qur'an Semai Insan Bestari berkomitmen mencetak penghafal Al-Qur'an yang siap menjadi pemimpin masa depan.</p>
-            <a href="#contact" class="btn btn-primary">Daftar Sekarang</a>
-            <a href="#programs" class="btn btn-secondary">Lihat Program</a>
+        <div class="container hero-content" data-aos="zoom-out" data-aos-duration="1500">
+            <span class="section-tag" style="color: white; opacity: 0.8;">Mencetak Generasi Madani</span>
+            <h1>SANTRI PEMBERANI<br>BERJIWA QURANI</h1>
+            <p>Pusat pendidikan Al-Qur'an terbaik yang melahirkan hafizh berkualitas, berjiwa entrepreneur, dan mencintai Sunnah Rasulullah SAW.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Daftar Sekarang</a>
+                <a href="#programs" class="btn btn-secondary">Pelajari Program</a>
+            </div>
         </div>
     </section>
 
     <section id="about">
-        <div class="container text-center">
-            <h2>Tentang Kami</h2>
+        <div class="container">
             <div class="about-grid">
-                <div class="about-text">
-                    <h3>Visi & Misi</h3>
-                    <p>Rumah Tahfizh Qur'an Semai Insan Bestari didirikan dengan visi menjadi pusat pendidikan Al-Qur'an terbaik yang melahirkan hafizh/hafizhah berkualitas, berjiwa entrepreneur, dan memiliki kecintaan tinggi terhadap sunnah Rasulullah SAW.</p>
-                    <br>
-                    <p>Kami menerapkan metode tahfizh yang efektif, didukung oleh pengajar profesional dan lingkungan yang Islami. Kami percaya, setiap anak memiliki potensi untuk menjadi penghafal Al-Qur'an.</p>
+                <div class="about-image" data-aos="fade-right"></div>
+                <div class="about-text" data-aos="fade-left">
+                    <span class="section-tag" style="text-align: left;">Tentang Kami</span>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Visi & Misi Menuju Kemandirian</h2>
+                    <p>RTQ Semai Insan Bestari didirikan dengan visi menjadi pusat pendidikan Al-Qur'an terbaik yang melahirkan hafizh/hafizhah berkualitas, berjiwa entrepreneur, dan memiliki kecintaan tinggi terhadap sunnah Rasulullah SAW.</p>
+                    <p style="margin-top: 20px; color: #555;">Kami menerapkan metode tahfizh yang efektif, didukung oleh pengajar profesional dan lingkungan yang Islami. Kami percaya, setiap anak memiliki potensi untuk menjadi penjaga kalam Allah.</p>
                 </div>
-                <div class="about-image">
-                    </div>
             </div>
         </div>
     </section>
 
     <section id="programs">
-        <div class="container text-center">
-            <h2>Program Unggulan</h2>
-            <div class="program-grid">
-                <div class="program-card">
-                    <i class="fas fa-book-open"></i>
+        <div class="container">
+            <span class="section-tag">Kurikulum Unggulan</span>
+            <h2 class="section-title">Program Pendidikan SIB</h2>
+            
+            <div class="program-grid-perfect">
+                <div class="program-box" data-aos="fade-up">
+                    <i class="fas fa-book-quran"></i>
                     <h3>Tahfizh Intensif</h3>
-                    <p>Program menghafal Al-Qur'an dengan target capaian yang terukur dan didampingi ustadz/ustadzah bersanad.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-mosque"></i>
-                    <h3>Sanad dan Tajwid</h3>
-                    <p>Fokus pada perbaikan makhorijul huruf dan sifat huruf, serta pembelajaran tajwid teori dan praktik yang mendalam.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>Pembinaan Karakter</h3>
-                    <p>Tidak hanya hafalan, kami juga membentuk karakter Islami, kemandirian, dan kepemimpinan pada setiap santri.</p>
+                    <p>Metode menghafal harian terfokus dengan target yang dipersonalisasi sesuai kemampuan santri.</p>
                 </div>
 
-                <div class="program-card">
-                    <i class="fas fa-moon"></i> 
-                    <h3>Mabit</h3>
-                    <p>Malam bina iman dan takwa untuk memperkuat ruhiyah santri, diisi dengan qiyamul lail dan muhasabah diri.</p>
+                <div class="program-box" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Sanad & Tajwid</h3>
+                    <p>Perbaikan bacaan (Tahsin) mendalam sesuai standar makharijul huruf untuk hafalan yang mutqin.</p>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-hiking"></i> 
-                    <h3>Rihlah Qur'ani</h3>
-                    <p>Kegiatan rekreasi dan tadabbur alam sebagai sarana penyegaran hafalan dan penanaman nilai-nilai Qur'an di luar kelas.</p>
+
+                <div class="program-box" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-shield-heart"></i>
+                    <h3>Pembinaan Karakter</h3>
+                    <p>Membentuk kemandirian, adab, dan kepemimpinan santri melalui pembinaan akhlak berkesinambungan.</p>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-microphone"></i> 
-                    <h3>Munaqosyah</h3>
-                    <p>Ujian akhir atau pertanggungjawaban hafalan santri di hadapan dewan penguji sebagai syarat kelulusan.</p>
-                </div>
-                <div class="program-card">
-                    <i class="fas fa-trophy"></i> 
-                    <h3>Takrimul Huffazh</h3>
-                    <p>Acara wisuda dan penghargaan bagi para santri yang telah menyelesaikan target hafalan Al-Qur'an.</p>
-                </div>
-                
-                <div class="program-card">
-                    <i class="fas fa-chalkboard-teacher"></i> 
+
+                <div class="program-box" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-users-viewfinder"></i>
                     <h3>Pilihan Kelas</h3>
-                    <p style="text-align: center; margin-bottom: 10px; font-weight: bold;">Tersedia 3 Pilihan Kelas:</p>
-                    <ul style="list-style: none; padding: 0; text-align: left; margin: 0 auto 15px auto; max-width: 200px; line-height: 2;">
-                        <li>&#x2713; Kelas Reguler</li>
-                        <li>&#x2713; Kelas Semi Private</li>
-                        <li>&#x2713; Kelas Private</li>
-                    </ul>
-                    
-                    <p style="text-align: center; font-weight: bold; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px;">Waktu Belajar:</p>
-                    <p style="text-align: center;">Pagi, Sore, dan Malam</p>
+                    <p>Tersedia Kelas Reguler, Semi Private, dan Full Private untuk waktu Pagi, Sore, atau Malam.</p>
+                    <div class="tag-container">
+                        <span class="tag-badge">Reguler</span>
+                        <span class="tag-badge">Private</span>
+                    </div>
                 </div>
-                
+
+                <div class="program-box" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-moon"></i>
+                    <h3>Mabit Qur'ani</h3>
+                    <p>Malam bina iman dan takwa untuk memperkuat ruhiyah melalui qiyamul lail dan muhasabah diri.</p>
+                </div>
+
+                <div class="program-box" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-award"></i>
+                    <h3>Munaqosyah</h3>
+                    <p>Ujian akhir dan wisuda takrim sebagai bentuk apresiasi pencapaian target hafalan santri.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="documentation">
-        <div class="container text-center">
-            <h2>Galeri Dokumentasi</h2>
-            <p>Lihat aktivitas dan momen kebersamaan santri Rumah Tahfizh Qur'an Semai Insan Bestari.</p>
-
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="milad.jpg" alt="Dokumentasi Rihlah"></div>
-                <div class="gallery-item"><img src="mabit.jpg" alt="Dokumentasi Mabit"></div>
-                <div class="gallery-item"><img src="pratahfizh.jpg" alt="Dokumentasi Tahfizh"></div>
-                <div class="gallery-item"><img src="guru.jpg" alt="Dokumentasi Munaqosyah"></div>
-                <div class="gallery-item"><img src="anak.PNG" alt="Dokumentasi Pengajian"></div>
-                <div class="gallery-item"><img src="aljabbar.jpg" alt="Dokumentasi Kebersamaan"></div>
+        <div class="container"><span class="section-tag">Documentation</span><h2 class="section-title">Galeri Aktivitas SIB</h2></div>
+        <div class="gallery-container">
+            <div class="gallery-track">
+                <img src="milad.jpg" class="gallery-img">
+                <img src="mabit.jpg" class="gallery-img">
+                <img src="pratahfizh.jpg" class="gallery-img">
+                <img src="guru.jpg" class="gallery-img">
+                <img src="anak.PNG" class="gallery-img">
+                <img src="aljabbar.jpg" class="gallery-img">
+                <img src="milad.jpg" class="gallery-img">
+                <img src="mabit.jpg" class="gallery-img">
+                <img src="pratahfizh.jpg" class="gallery-img">
+                <img src="guru.jpg" class="gallery-img">
+                <img src="anak.PNG" class="gallery-img">
+                <img src="aljabbar.jpg" class="gallery-img">
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="container text-center">
-            <h2>Hubungi Kami</h2>
-            <p>Tertarik bergabung atau ingin bertanya lebih lanjut? Silakan hubungi kami melalui informasi di bawah ini.</p>
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Alamat</h3>
-                    <p>Jl.Saluyu B9 No.23 Komplek Riung Bandung</p>
+        <div class="container">
+            <div class="contact-box" data-aos="zoom-in">
+                <div class="contact-text">
+                    <h2 style="color: white; text-align: left; margin-bottom: 30px;">Mulai Perjalanan Qur'ani<br>Putra-Putri Anda</h2>
+                    <div class="contact-info-item"><i class="fas fa-location-dot"></i><span>Jl. Saluyu B9 No.23, Riung Bandung</span></div>
+                    <div class="contact-info-item"><i class="fas fa-phone-volume"></i><span>+62 813-1554-589</span></div>
+                    <div class="contact-info-item"><i class="fas fa-envelope"></i><span>rtqsibbandung@gmail.com</span></div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>Telepon</h3>
-                    <p>(+62) 813-1554-589</p>
+                <div class="contact-btns-wrapper">
+                    <a href="https://wa.me/628131554589" target="_blank" class="btn btn-primary" style="background: white; color: var(--emerald); width: 100%; text-align: center; margin-bottom: 15px;">Daftar via WhatsApp</a>
+                    <a href="https://forms.gle/Rvz1YpFZfpGHpJbXA" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; margin: 0;">Isi Formulir Online</a>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>rtqsibbandung@gmail.com</p>
-                </div>
-            </div>
-            
-            <div class="contact-buttons">
-                <a href="https://wa.me/628131554589" target="_blank" class="btn btn-primary">
-                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                </a>
-                
-                <a href="https://forms.gle/Rvz1YpFZfpGHpJbXA" target="_blank" class="btn btn-secondary">
-                    <i class="fas fa-user-plus"></i> Daftar Sekarang
-                </a>
             </div>
         </div>
     </section>
 
-    <footer id="footer">
+    <footer>
         <div class="container">
-            <div class="social-links" style="margin-bottom: 10px;">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/rumah.tahfizh.sib/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <div style="margin-bottom: 40px;">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rumah.tahfizh.sib/" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
             </div>
-            <p>&copy; 2025 Rumah Tahfizh Qur'an Semai Insan Bestari. Hak Cipta Dilindungi.</p>
+            <h3 style="color: var(--emerald); margin-bottom: 10px;">RTQ SEMAI INSAN BESTARI</h3>
+            <p style="font-size: 0.85rem; color: #999;">&copy; 2026 Rumah Tahfizh Qur'an SIB. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        function toggleMenu() {
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('active');
-        }
+        AOS.init({ once: true, duration: 1000 });
 
-        // Opsional: Menutup menu ketika link diklik (untuk mode mobile)
-        document.querySelectorAll('#nav-menu ul li a').forEach(item => {
-            item.addEventListener('click', () => {
-                const navMenu = document.getElementById('nav-menu');
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                }
-            });
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 80) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
-    </script>
 
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.style.display = (nav.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
